@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import Header from "./Header";
-import { Router, Route, Link, browserHistory, IndexRoute } from 'react-router';
+import { Router, Route, Link, hashHistory, IndexRoute } from 'react-router';
 
 class App extends React.Component {
     render() {
@@ -9,6 +9,7 @@ class App extends React.Component {
         <h1>App</h1>
         <ul>
           <li><Link to="/about">About</Link></li>
+          <li><Link to="/head">Header</Link></li>
         </ul>
         {this.props.children}
       </div>;
@@ -23,12 +24,11 @@ class Nav extends React.Component {
 }
 
 render((
-  <Router history={browserHistory}>
+  <Router history={hashHistory}>
     <Route path="/" component={App}>
+        <IndexRoute component={Header}/>
       <Route path="about" component={Nav}/>
+      <Route path="head" component={Header}/>
     </Route>
   </Router>
-), document.getElementById('app'))
-
-
-// render(<App/>, document.getElementById('app'));
+), document.getElementById('app'));
