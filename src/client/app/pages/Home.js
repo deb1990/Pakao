@@ -3,13 +3,13 @@
  */
 import React from 'react';
 import loginStore from '../stores/loginStore';
+import RecipeList from '../pages/Food/RecipeList';
 import { hashHistory } from 'react-router';
 
 export default class Home extends React.Component {
     constructor(){
         super();
         this.loggedInUser = loginStore.getLoggedInUser();
-
     }
 
     componentWillMount(){
@@ -26,7 +26,7 @@ export default class Home extends React.Component {
 
     render () {
         return <div>
-            LoggedIN
+            <RecipeList></RecipeList>
         </div>;
     }
 }
